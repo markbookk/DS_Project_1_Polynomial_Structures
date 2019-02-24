@@ -16,13 +16,26 @@ public class PolynomialImp implements Polynomial{
 		for (String i: splitPoly) {
 			String[] splitTerm = i.split("x");
 			
-			if (!splitTerm[1].contains("^"))
-				
+			double coefficient = Double.parseDouble(splitTerm[0]);
+			int exponent = 0;
 			
-			polyArray.add(new TermpImp(Double.parseDouble(splitTerm[0]), Integer.parseInt(splitTerm[1])));
+			if (splitTerm.length > 1) { //8x^2
+				String[] splitExponent = splitTerm[1].split("\\^");
+				if (splitExponent.length > 1) { //x^2
+					exponent = Integer.parseInt(splitExponent[1]);
+				}else { //8x
+					exponent = 1;
+				}
+			}else {
+				//Do nothing because exponent = 0 is already true
+			}
+			
+				
+			System.out.println(coefficient + "\t" + exponent);
+			polyArray.add(new TermpImp(coefficient, exponent));
 		}
 		
-		System.exit(0);
+//		System.exit(0);
 		
 	}
 
