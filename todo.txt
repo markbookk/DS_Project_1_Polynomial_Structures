@@ -1,0 +1,10 @@
+- write a Term class (TermImp) that implements the Term interface
+- write a Polynomial class (PolynomialImp) that implements the Polynomial interface
+
+
+custom:
+- check the changeCapacityMethods especially in remove
+- do we need to use iterator?
+- verify all error messages
+- optimize all enhanced for loops for size only
+- check if the poly is zero (0)
