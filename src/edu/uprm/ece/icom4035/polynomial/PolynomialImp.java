@@ -1,20 +1,26 @@
 package edu.uprm.ece.icom4035.polynomial;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Spliterators;
+
+import edu.uprm.ece.icom4035.list.ArrayList;
 
 public class PolynomialImp implements Polynomial{
 	//keeps track of a list of terms and a ListFactory
 	//uses the factory create the list of terms
 	//TermListFactory tells this class which factory to use
 	
+	public ArrayList<Term> polyList = new ArrayList<>();
+	
 	public PolynomialImp(String poly) {
 		String[] splitPoly = poly.split("\\+");
-		ArrayList<Term> polyArray = new ArrayList<>();
 		
 		for (String i: splitPoly) {
 			String[] splitTerm = i.split("x");
+			
+			//If coefficient is zero, skip unless P(y) = 0
+			if (splitTerm[0].equals("0") && poly != "0")
+				continue;
 			
 			double coefficient = Double.parseDouble(splitTerm[0]);
 			int exponent = 0;
@@ -31,10 +37,13 @@ public class PolynomialImp implements Polynomial{
 			}
 			
 				
-			System.out.println(coefficient + "\t" + exponent);
-			polyArray.add(new TermpImp(coefficient, exponent));
+			polyList.add(new TermpImp(coefficient, exponent));
 		}
 		
+//		//Debug
+//		for (Term i: polyArray) {
+//			System.out.println("Info: " + i.getCoefficient() + "\t" + i.getExponent());
+//		}
 //		System.exit(0);
 		
 	}
@@ -44,11 +53,64 @@ public class PolynomialImp implements Polynomial{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	@Override
 	public Polynomial add(Polynomial P2) {
-		// TODO Auto-generated method stub
-		return null;
+		PolynomialImp P1n = this;
+		PolynomialImp P2n = (PolynomialImp) P2;
+		
+		
+		PolynomialImp pTemp;
+		if ( ((Term) (P1n.polyList.get(0))).getExponent() >= ((Term) (P2n.polyList.get(0))).getExponent() ) {
+			;//Do nothing
+		}else {//Exchanging the variables to start with
+			pTemp = P1n;
+			P1n = P2n;
+			P2n = pTemp;
+		}
+		
+		String polyString = "";
+		int count = 0;
+		
+		for (int i=0; i<P1n.polyList.size(); i++) {
+			if (count != 0)
+				polyString = polyString + "+";
+			
+			if ( ((Term) P1n.polyList.get(count)).getExponent() > ((Term) P2n.polyList.get(count)).getExponent() ) { //if exponent is greater
+				
+				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
+					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient() + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
+				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
+					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient() + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient();
+				}
+				
+			}
+			
+			else if ( ((Term) P1n.polyList.get(count)).getExponent() == ((Term) P2n.polyList.get(count)).getExponent() ) { //if exponent is the same
+				
+				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() + ((Term) P2n.polyList.get(count)).getCoefficient() ) ;
+				
+				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
+					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
+				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
+					polyString = polyString + coefficientSum + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + coefficientSum;
+				}
+				
+			}
+			
+			
+//			System.out.println(sumPoly);
+			count ++;
+		}
+		
+		System.out.println(polyString);
+		Polynomial output = new PolynomialImp(polyString);
+		return output;
 	}
 
 	@Override
@@ -101,8 +163,30 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public boolean equals(Polynomial P) {
-		// TODO Auto-generated method stub
+		if (this.toString().equals(P.toString()))
+			return true;
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		String polyString = "";
+		int count = 0;
+		for (int i=0; i<polyList.size(); i++) {
+			if (count !=0)
+				polyString += "+";
+			if ( ((Term) this.polyList.get(count)).getExponent() > 1 ) {//x^n
+				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient() + "x^" + ((Term) this.polyList.get(count)).getExponent();
+			}else if ( ((Term) this.polyList.get(count)).getExponent() == 1) {//x
+				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient() + "x";
+			}else {//without exponent, only coefficient
+				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient();
+			}
+		
+			count ++;
+		}
+		
+		return polyString;
 	}
 
 }

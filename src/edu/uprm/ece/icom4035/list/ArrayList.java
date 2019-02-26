@@ -51,6 +51,7 @@ public class ArrayList<E> implements List{
 
 		
 	}
+	
 
 	@Override
 	public void add(int index, Object obj) {
@@ -250,6 +251,7 @@ public class ArrayList<E> implements List{
 		for (int pos = low; pos <= sup; pos++)
 			elements[pos-1] = elements[pos]; 
 	}
+
 
 
 }
