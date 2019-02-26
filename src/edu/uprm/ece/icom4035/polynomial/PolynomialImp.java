@@ -25,12 +25,16 @@ public class PolynomialImp implements Polynomial{
 			double coefficient = Double.parseDouble(splitTerm[0]);
 			int exponent = 0;
 			
+			if ( splitTerm.length == 1 && i.contains("x") ) {
+				exponent = 1;
+			}
+			
 			if (splitTerm.length > 1) { //8x^2
 				String[] splitExponent = splitTerm[1].split("\\^");
 				if (splitExponent.length > 1) { //x^2
 					exponent = Integer.parseInt(splitExponent[1]);
 				}else { //8x
-					exponent = 1;
+//					exponent = 1;
 				}
 			}else {
 				//Do nothing because exponent = 0 is already true
@@ -39,6 +43,7 @@ public class PolynomialImp implements Polynomial{
 				
 			polyList.add(new TermpImp(coefficient, exponent));
 		}
+		
 		
 //		//Debug
 //		for (Term i: polyArray) {
@@ -72,12 +77,16 @@ public class PolynomialImp implements Polynomial{
 		
 		String polyString = "";
 		int count = 0;
+		int count2 = 0;
+		int maxExponent = ((Term) P1n.polyList.get(count)).getExponent();
+		System.out.println(maxExponent);
 		
-		for (int i=0; i<P1n.polyList.size(); i++) {
+		for (int i=0; i <= maxExponent; i++) {
 			if (count != 0)
 				polyString = polyString + "+";
 			
-			if ( ((Term) P1n.polyList.get(count)).getExponent() > ((Term) P2n.polyList.get(count)).getExponent() ) { //if exponent is greater
+			System.out.println(count + "\t" + count2);
+			if ( (count < P1n.polyList.size() && count2 < P2n.polyList.size()) && ( ((Term) P1n.polyList.get(count)).getExponent() > ((Term) P2n.polyList.get(count2)).getExponent() ) ) { //if exponent is greater
 				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient() + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
@@ -85,13 +94,14 @@ public class PolynomialImp implements Polynomial{
 					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient() + "x";
 				}else {//without exponent, only coefficient
 					polyString = polyString + ((Term) P1n.polyList.get(count)).getCoefficient();
-				}
+				} 
 				
+				count ++;
 			}
 			
-			else if ( ((Term) P1n.polyList.get(count)).getExponent() == ((Term) P2n.polyList.get(count)).getExponent() ) { //if exponent is the same
+			else if ( (count < P1n.polyList.size() && count2 < P2n.polyList.size()) && ( ((Term) P1n.polyList.get(count)).getExponent() == ((Term) P2n.polyList.get(count2)).getExponent() ) ) { //if exponent is the same
 				
-				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() + ((Term) P2n.polyList.get(count)).getCoefficient() ) ;
+				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() + ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
@@ -101,11 +111,22 @@ public class PolynomialImp implements Polynomial{
 					polyString = polyString + coefficientSum;
 				}
 				
+				count ++;
+				count2 ++;
+			}else { //exponent is smaller
+				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
+					polyString = polyString + ((Term) P2n.polyList.get(count2)).getCoefficient() + "x^" + ((Term) P2n.polyList.get(count)).getExponent();
+				}else if ( ((Term) P2n.polyList.get(count)).getExponent() == 1) {//x
+					polyString = polyString + ((Term) P2n.polyList.get(count)).getCoefficient() + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + ((Term) P2n.polyList.get(count)).getCoefficient();
+				}
+				
+				count2 ++;
 			}
 			
 			
-//			System.out.println(sumPoly);
-			count ++;
+			System.out.println(polyString);
 		}
 		
 		System.out.println(polyString);
