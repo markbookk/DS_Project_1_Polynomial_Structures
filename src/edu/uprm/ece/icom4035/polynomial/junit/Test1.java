@@ -15,11 +15,13 @@ public class Test1 {
 	
 	private Polynomial P1;
 	private Polynomial P2;
+	private Polynomial P98; //MN
 	private Polynomial P99; //MN
 
 	@Before
 	public void setUp() throws Exception {
-		P99 = new PolynomialImp("10x^3+10x^2+10x"); //MN
+		P98 = new PolynomialImp("2x^3+3x+8"); //MN
+		P99 = new PolynomialImp("x^4+x^2+8x"); //MN
 		 P1 = new PolynomialImp("8x^2+1");
 		 P2 = new PolynomialImp("4x^2+2");
 
@@ -27,10 +29,10 @@ public class Test1 {
 
 	@Test
 	public void testAdd() {
-//		Polynomial P3 = P1.add(P2);//MN
-		Polynomial P3 = P99.add(P2);
+//		Polynomial P3 = P1.add(P2);
+		Polynomial P3 = P99.add(P98);
 //		Polynomial P4 = new PolynomialImp("12x^2+3");
-		Polynomial P4 = new PolynomialImp("10x^3+14x^2+10x+2");
+		Polynomial P4 = new PolynomialImp("x^4+2x^3+x^2+11x+8"); //MN
 		System.out.printf("Add-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));
 		
