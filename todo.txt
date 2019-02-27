@@ -10,3 +10,5 @@ custom:
 - check if the poly is zero (0)
 - what happens if (10x+5x) is the polynomial?
 - verify poly 0 on toString
+- what if it's another variable then "x"
+- what if there is a negative
