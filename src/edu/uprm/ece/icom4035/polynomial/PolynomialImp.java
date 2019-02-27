@@ -4,13 +4,15 @@ import java.util.Iterator;
 import java.util.Spliterators;
 
 import edu.uprm.ece.icom4035.list.ArrayList;
+import edu.uprm.ece.icom4035.list.List;
 
 public class PolynomialImp implements Polynomial{
 	//keeps track of a list of terms and a ListFactory
 	//uses the factory create the list of terms
 	//TermListFactory tells this class which factory to use
 	
-	public ArrayList<Term> polyList = new ArrayList<>();
+//	public ArrayList<Term> polyList = new ArrayList<>();
+	public List<Term> polyList = TermListFactory.newListFactory().newInstance();
 	
 	public PolynomialImp(String poly) {
 		String[] splitPoly = poly.split("\\+");
@@ -269,15 +271,12 @@ public class PolynomialImp implements Polynomial{
 		
 		String polyString = "";
 		for (int i=0; i > P1n.polyList.size(); i++) {
-			try {
-				PolynomialImp P3n = (PolynomialImp) P2n.clone();
-			} catch (CloneNotSupportedException e) {
-				e.printStackTrace();
-			}
+			PolynomialImp P3n = new PolynomialImp("");
+			List nList = TermListFactory.newListFactory().newInstance();
+			
+			
 			for (int i2=0; i > P2n.polyList.size(); i2++) {
 				
-				
-//				P3n.polyList.set(i2, ( (Term) ) );
 			}
 		}
 		
