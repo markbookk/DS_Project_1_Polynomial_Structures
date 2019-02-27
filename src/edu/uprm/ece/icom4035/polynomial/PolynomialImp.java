@@ -139,7 +139,7 @@ public class PolynomialImp implements Polynomial{
 				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
 				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
-					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count2)).getExponent();
+					polyString = polyString + coefficientSum + "x^" + ((Term) P2n.polyList.get(count2)).getExponent();
 				}else if ( ((Term) P2n.polyList.get(count2)).getExponent() == 1) {//x
 					polyString = polyString + coefficientSum + "x";
 				}else {//without exponent, only coefficient
@@ -270,10 +270,17 @@ public class PolynomialImp implements Polynomial{
 		for (int i=0; i<polyList.size(); i++) {
 			if (count !=0)
 				polyString += "+";
+			
+			String coefficient;
+			if ( ((Term) this.polyList.get(count)).getCoefficient() == 1 )
+				coefficient = "";
+			else
+				coefficient = "" + ((Term) this.polyList.get(count)).getCoefficient();
+			
 			if ( ((Term) this.polyList.get(count)).getExponent() > 1 ) {//x^n
-				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient() + "x^" + ((Term) this.polyList.get(count)).getExponent();
+				polyString = polyString + coefficient + "x^" + ((Term) this.polyList.get(count)).getExponent();
 			}else if ( ((Term) this.polyList.get(count)).getExponent() == 1) {//x
-				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient() + "x";
+				polyString = polyString + coefficient + "x";
 			}else {//without exponent, only coefficient
 				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient();
 			}
