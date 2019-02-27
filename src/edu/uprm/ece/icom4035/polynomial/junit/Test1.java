@@ -29,10 +29,8 @@ public class Test1 {
 
 	@Test
 	public void testAdd() {
-//		Polynomial P3 = P1.add(P2);
-		Polynomial P3 = P99.add(P98);
-//		Polynomial P4 = new PolynomialImp("12x^2+3");
-		Polynomial P4 = new PolynomialImp("x^4+2x^3+x^2+11x+8"); //MN
+		Polynomial P3 = P1.add(P2);
+		Polynomial P4 = new PolynomialImp("12x^2+3");
 		System.out.printf("Add-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));
 		
