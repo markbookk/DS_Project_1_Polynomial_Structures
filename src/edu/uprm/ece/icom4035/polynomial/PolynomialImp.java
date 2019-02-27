@@ -268,17 +268,17 @@ public class PolynomialImp implements Polynomial{
 			P1n = P2n;
 			P2n = pTemp;
 		}
-		System.out.println("Debug1");
+//		System.out.println("Debug1");
 		Polynomial polyResult = new PolynomialImp("0");
 		for (int i=0; i < P1n.polyList.size(); i++) {
-			System.out.println("Debug2");
+//			System.out.println("Debug2");
 			PolynomialImp P3n = new PolynomialImp("0");
 			List<Term> nList = TermListFactory.newListFactory().newInstance();
 			
 			for (int i2=0; i2 < P2n.polyList.size(); i2++) {
-				System.out.println("Debug3");
-				System.out.println(P1n.polyList.size() + "\t" + P2n.polyList.size());
-				System.out.println(i + "\t" + i2 );
+//				System.out.println("Debug3");
+//				System.out.println(P1n.polyList.size() + "\t" + P2n.polyList.size());
+//				System.out.println(i + "\t" + i2 );
 				double coefficient = ((Term) (P1n.polyList.get(i))).getCoefficient() * ((Term) (P2n.polyList.get(i2))).getCoefficient();
 				int exponent = ((Term) (P1n.polyList.get(i))).getExponent() + ((Term) (P2n.polyList.get(i2))).getExponent() ;
 				TermImp nTerm = new TermImp(coefficient, exponent);
@@ -286,19 +286,18 @@ public class PolynomialImp implements Polynomial{
 			}
 			P3n.polyList = nList;
 			polyResult = polyResult.add(P3n);
-			System.out.println("hio->" + polyResult.toString());
+//			System.out.println("hio->" + polyResult.toString());
 			
 			
 		}
-		System.out.println("done multiply()");
-		
+//		System.out.println("done multiply()");
 		return polyResult;
 	}
 
 	@Override
 	public Polynomial multiply(double c) {
-		// TODO Auto-generated method stub
-		return null;
+		PolynomialImp P3n = new PolynomialImp("" + c);
+		return multiply(P3n);
 	}
 
 	@Override

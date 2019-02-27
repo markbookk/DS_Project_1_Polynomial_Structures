@@ -99,15 +99,15 @@ public class Test1 {
 //		double delta = Math.abs(number1 - number2);
 //		assertTrue(delta < EPSILON);
 //	}
-//
-//	@Test
-//	public void testMultiplyDouble() {
-//		Polynomial P3 = P1.multiply(2);
-//		Polynomial P4 = new PolynomialImp("16x^2+2");
-//		System.out.printf("Multiply-> P3: %s, P4: %s\n", P3, P4);
-//		assertTrue(P3.equals(P4));
-//	}
-//
+
+	@Test
+	public void testMultiplyDouble() {
+		Polynomial P3 = P1.multiply(2);
+		Polynomial P4 = new PolynomialImp("16x^2+2");
+		System.out.printf("Multiply-> P3: %s, P4: %s\n", P3, P4);
+		assertTrue(P3.equals(P4));
+	}
+
 //	@Test
 //	public void testToString() {
 //		String string1 = P1.toString();
