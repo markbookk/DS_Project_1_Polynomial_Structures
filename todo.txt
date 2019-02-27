@@ -3,6 +3,8 @@
 
 
 custom:
+- CHECK WHAT HAPPENS WHEN YOU CREATE A EMPTY POLYNOMIAL
+
 - check the changeCapacityMethods especially in remove
 - do we need to use iterator?
 - verify all error messages
@@ -12,3 +14,4 @@ custom:
 - verify poly 0 on toString
 - what if it's another variable then "x"
 - what if there is a negative
+- what if we add two empty polynomials

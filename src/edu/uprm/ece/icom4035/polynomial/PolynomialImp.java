@@ -45,7 +45,7 @@ public class PolynomialImp implements Polynomial{
 				//Do nothing because exponent = 0 is already true
 			}
 			
-			polyList.add(new TermpImp(coefficient, exponent));
+			polyList.add(new TermImp(coefficient, exponent));
 		}
 		
 		
@@ -268,19 +268,31 @@ public class PolynomialImp implements Polynomial{
 			P1n = P2n;
 			P2n = pTemp;
 		}
-		
-		String polyString = "";
-		for (int i=0; i > P1n.polyList.size(); i++) {
-			PolynomialImp P3n = new PolynomialImp("");
-			List nList = TermListFactory.newListFactory().newInstance();
+		System.out.println("Debug1");
+		Polynomial polyResult = new PolynomialImp("0");
+		for (int i=0; i < P1n.polyList.size(); i++) {
+			System.out.println("Debug2");
+			PolynomialImp P3n = new PolynomialImp("0");
+			List<Term> nList = TermListFactory.newListFactory().newInstance();
 			
-			
-			for (int i2=0; i > P2n.polyList.size(); i2++) {
-				
+			for (int i2=0; i2 < P2n.polyList.size(); i2++) {
+				System.out.println("Debug3");
+				System.out.println(P1n.polyList.size() + "\t" + P2n.polyList.size());
+				System.out.println(i + "\t" + i2 );
+				double coefficient = ((Term) (P1n.polyList.get(i))).getCoefficient() * ((Term) (P2n.polyList.get(i2))).getCoefficient();
+				int exponent = ((Term) (P1n.polyList.get(i))).getExponent() + ((Term) (P2n.polyList.get(i2))).getExponent() ;
+				TermImp nTerm = new TermImp(coefficient, exponent);
+				nList.add(nTerm);
 			}
+			P3n.polyList = nList;
+			polyResult = polyResult.add(P3n);
+			System.out.println("hio->" + polyResult.toString());
+			
+			
 		}
+		System.out.println("done multiply()");
 		
-		return null;
+		return polyResult;
 	}
 
 	@Override

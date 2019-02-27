@@ -1,11 +1,11 @@
 package edu.uprm.ece.icom4035.polynomial;
 
-public class TermpImp implements Term{
+public class TermImp implements Term{
 	
 	private double coefficient;
 	private int exponent;
 	
-	public TermpImp (double coefficient, int exponent) {
+	public TermImp (double coefficient, int exponent) {
 		this.coefficient = coefficient;
 		this.exponent = exponent;
 	}
