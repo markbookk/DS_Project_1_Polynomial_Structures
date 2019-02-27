@@ -38,21 +38,21 @@ public class Test1 {
 		
 	}
 
-//	@Test
-//	public void testSubtract() {
-//		Polynomial P3 = P1.subtract(P2);
-//		Polynomial P4 = new PolynomialImp("4x^2+-1");
-//		System.out.printf("Subtract-> P3: %s, P4: %s\n", P3, P4);
-//		assertTrue(P3.equals(P4));
-//	}
+	@Test
+	public void testSubtract() {
+		Polynomial P3 = P1.subtract(P2);
+		Polynomial P4 = new PolynomialImp("4x^2+-1");
+		System.out.printf("Subtract-> P3: %s, P4: %s\n", P3, P4);
+		assertTrue(P3.equals(P4));
+	}
 //
-//	@Test
-//	public void testMultiplyPolynomial() {
-//		Polynomial P3 = P1.multiply(P2);
-//		Polynomial P4 = new PolynomialImp("32x^4+20x^2+2");
-//		System.out.printf("Multiply-> P3: %s, P4: %s\n", P3, P4);
-//		assertTrue(P3.equals(P4));
-//	}
+	@Test
+	public void testMultiplyPolynomial() {
+		Polynomial P3 = P1.multiply(P2);
+		Polynomial P4 = new PolynomialImp("32x^4+20x^2+2");
+		System.out.printf("Multiply-> P3: %s, P4: %s\n", P3, P4);
+		assertTrue(P3.equals(P4));
+	}
 //
 //	@Test
 //	public void testDerivative() {
