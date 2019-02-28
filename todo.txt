@@ -16,3 +16,4 @@ custom:
 - what if there is a negative
 - what if we add two empty polynomials
 - maybe take out the P1n and P2n when it isn't necessary
+- verify for if the variable is another letter
