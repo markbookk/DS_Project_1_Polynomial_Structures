@@ -37,7 +37,9 @@ public class Test2 {
 		System.out.printf("Subtract I-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));
 		
+		System.out.println("P1->" + P1);
 		P3 = P1.subtract(P1);
+		System.out.println("P3->" + P3);
 		P4 = new PolynomialImp("0");
 		System.out.printf("Subtract II-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));

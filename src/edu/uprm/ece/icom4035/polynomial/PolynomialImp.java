@@ -15,6 +15,9 @@ public class PolynomialImp implements Polynomial{
 	public List<Term> polyList = TermListFactory.newListFactory().newInstance();
 	
 	public PolynomialImp(String poly) {
+		if (poly == "")
+			poly = "0";
+		
 		String[] splitPoly = poly.split("\\+");
 		
 		for (String i: splitPoly) {
@@ -154,7 +157,7 @@ public class PolynomialImp implements Polynomial{
 			
 		}
 		
-//		System.out.println(polyString);
+//		System.out.println("Addition result:" + polyString);
 		Polynomial output = new PolynomialImp(polyString);
 		return output;
 	}
@@ -196,6 +199,9 @@ public class PolynomialImp implements Polynomial{
 				
 				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() - ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
+				if (coefficientSum == 0)
+					continue;
+				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
 				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
@@ -213,6 +219,9 @@ public class PolynomialImp implements Polynomial{
 //				System.out.println("2nd option");
 				
 				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() ) ;
+				
+				if (coefficientSum == 0)
+					continue;
 				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
@@ -232,6 +241,9 @@ public class PolynomialImp implements Polynomial{
 				
 				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
+				if (coefficientSum == 0)
+					continue;
+				
 				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P2n.polyList.get(count2)).getExponent();
 				}else if ( ((Term) P2n.polyList.get(count2)).getExponent() == 1) {//x
@@ -249,7 +261,7 @@ public class PolynomialImp implements Polynomial{
 			
 		}
 		
-//		System.out.println(polyString);
+//		System.out.println("Subtraction result:" + polyString);
 		Polynomial output = new PolynomialImp(polyString);
 		return output;
 	}
