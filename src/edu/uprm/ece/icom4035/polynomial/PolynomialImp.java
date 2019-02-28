@@ -348,8 +348,11 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public double evaluate(double x) {
-		// TODO Auto-generated method stub
-		return 0;
+		double result = 0;
+		for (int i=0; i < polyList.size(); i++) {
+			result += ((Term) (polyList.get(i))).getCoefficient() * Math.pow(x, ((Term) (polyList.get(i))).getExponent());
+		}
+		return result;
 	}
 
 	@Override

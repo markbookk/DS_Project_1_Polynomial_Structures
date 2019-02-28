@@ -82,7 +82,7 @@ public class Test1 {
 //		double delta = number1 - number2;
 //		assertTrue(delta < EPSILON);
 //	}
-//
+
 //	@Test
 //	public void testDegree() {
 //		int number1 = P1.degree();
@@ -91,14 +91,14 @@ public class Test1 {
 //		assertTrue(number1 == number2);
 //	}
 //
-//	@Test
-//	public void testEvaluate() {
-//		double number1 = P1.evaluate(3);
-//		double number2 = 73.0;
-//		System.out.printf("Evaluate-> number1: %f, number2: %f\n", number1, number2);
-//		double delta = Math.abs(number1 - number2);
-//		assertTrue(delta < EPSILON);
-//	}
+	@Test
+	public void testEvaluate() {
+		double number1 = P1.evaluate(3);
+		double number2 = 73.0;
+		System.out.printf("Evaluate-> number1: %f, number2: %f\n", number1, number2);
+		double delta = Math.abs(number1 - number2);
+		assertTrue(delta < EPSILON);
+	}
 
 	@Test
 	public void testMultiplyDouble() {
