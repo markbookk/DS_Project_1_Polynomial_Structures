@@ -63,17 +63,17 @@ public class Test1 {
 
 	}
 
-//	@Test
-//	public void testIndefiniteIntegral() {
-//		Polynomial P3 = P2.indefiniteIntegral();
-//		double c1 = 4/3.0;
-//		String strP4 = c1 + "x^3+2x+1";
-//		Polynomial P4 = new PolynomialImp(strP4);
-//		System.out.printf("Indefinite Integral-> P3: %s, P4: %s\n", P3, P4);
-//		assertTrue(P3.equals(P4));
-//
-//	}
-//
+	@Test
+	public void testIndefiniteIntegral() {
+		Polynomial P3 = P2.indefiniteIntegral();
+		double c1 = 4/3.0;
+		String strP4 = c1 + "x^3+2x+1";
+		Polynomial P4 = new PolynomialImp(strP4);
+		System.out.printf("Indefinite Integral-> P3: %s, P4: %s\n", P3, P4);
+		assertTrue(P3.equals(P4));
+
+	}
+
 //	@Test
 //	public void testDefiniteIntegral() {
 //		double number1 = P1.definiteIntegral(2, 4);
