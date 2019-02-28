@@ -1,5 +1,6 @@
 package edu.uprm.ece.icom4035.polynomial;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Spliterators;
 
@@ -22,6 +23,10 @@ public class PolynomialImp implements Polynomial{
 		
 		for (String i: splitPoly) {
 			String[] splitTerm = i.split("x");
+			
+			
+			if (splitTerm.length == 0 && i.contains("x"))
+				splitTerm = new String[] {"1"};//initializes "x" in splitTerm to prevent errors
 			
 			//If coefficient is zero, skip unless P(y) = 0
 			if (splitTerm[0].equals("0") && poly != "0")

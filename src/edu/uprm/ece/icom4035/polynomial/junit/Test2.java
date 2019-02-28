@@ -101,7 +101,6 @@ public class Test2 {
 
 	@Test
 	public void testMultiplyDouble() {
-		System.out.println("Testing multiple double");
 		Polynomial P3 = P1.multiply(0);
 		Polynomial P4 = new PolynomialImp("0");
 		System.out.printf("Multiply -> P3: %s, P4: %s\n", P3, P4);
