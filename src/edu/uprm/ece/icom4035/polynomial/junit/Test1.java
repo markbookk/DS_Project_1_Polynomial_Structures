@@ -53,16 +53,16 @@ public class Test1 {
 		System.out.printf("Multiply-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));
 	}
-//
-//	@Test
-//	public void testDerivative() {
-//		Polynomial P3 = P1.derivative();
-//		Polynomial P4 = new PolynomialImp("16x");
-//		System.out.printf("Derivative-> P3: %s, P4: %s\n", P3, P4);
-//		assertTrue(P3.equals(P4));
-//
-//	}
-//
+
+	@Test
+	public void testDerivative() {
+		Polynomial P3 = P1.derivative();
+		Polynomial P4 = new PolynomialImp("16x");
+		System.out.printf("Derivative-> P3: %s, P4: %s\n", P3, P4);
+		assertTrue(P3.equals(P4));
+
+	}
+
 //	@Test
 //	public void testIndefiniteIntegral() {
 //		Polynomial P3 = P2.indefiniteIntegral();

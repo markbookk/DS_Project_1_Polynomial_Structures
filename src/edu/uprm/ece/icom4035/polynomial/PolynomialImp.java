@@ -282,7 +282,8 @@ public class PolynomialImp implements Polynomial{
 				double coefficient = ((Term) (P1n.polyList.get(i))).getCoefficient() * ((Term) (P2n.polyList.get(i2))).getCoefficient();
 				int exponent = ((Term) (P1n.polyList.get(i))).getExponent() + ((Term) (P2n.polyList.get(i2))).getExponent() ;
 				TermImp nTerm = new TermImp(coefficient, exponent);
-				nList.add(nTerm);
+				if (coefficient != 0)
+					nList.add(nTerm);
 			}
 			P3n.polyList = nList;
 			polyResult = polyResult.add(P3n);
@@ -302,8 +303,19 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public Polynomial derivative() {
-		// TODO Auto-generated method stub
-		return null;
+		PolynomialImp P3n = new PolynomialImp("0");
+		System.out.println(P3n);
+		List<Term> nList = TermListFactory.newListFactory().newInstance();
+		for (int i=0; i < polyList.size(); i++) {
+			double coefficient = ((Term) (polyList.get(i))).getCoefficient() * ((Term) (polyList.get(i))).getExponent();
+			int exponent = ((Term) (polyList.get(i))).getExponent() - 1 ;
+			TermImp nTerm = new TermImp(coefficient, exponent);
+			if (coefficient != 0) {
+				nList.add(nTerm);
+			}
+		}
+		P3n.polyList = nList;
+		return P3n;
 	}
 
 	@Override
