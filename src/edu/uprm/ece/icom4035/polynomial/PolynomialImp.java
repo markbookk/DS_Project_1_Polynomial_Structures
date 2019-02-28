@@ -378,14 +378,14 @@ public class PolynomialImp implements Polynomial{
 			if ( ((Term) this.polyList.get(count)).getCoefficient() == 1 )
 				coefficient = "";
 			else
-				coefficient = "" + ((Term) this.polyList.get(count)).getCoefficient();
+				coefficient = "" + String.format("%.2f", ((Term) this.polyList.get(count)).getCoefficient() );
 			
 			if ( ((Term) this.polyList.get(count)).getExponent() > 1 ) {//x^n
 				polyString = polyString + coefficient + "x^" + ((Term) this.polyList.get(count)).getExponent();
 			}else if ( ((Term) this.polyList.get(count)).getExponent() == 1) {//x
 				polyString = polyString + coefficient + "x";
 			}else {//without exponent, only coefficient
-				polyString = polyString + ((Term) this.polyList.get(count)).getCoefficient();
+				polyString = polyString + String.format("%.2f", ((Term) this.polyList.get(count)).getCoefficient() );
 			}
 		
 			count ++;
