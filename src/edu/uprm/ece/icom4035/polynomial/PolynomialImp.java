@@ -341,8 +341,13 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public int degree() {
-		// TODO Auto-generated method stub
-		return 0;
+		int degree = 0;
+		for (int i=0; i < polyList.size(); i++) {
+			int exponent = ((Term) (polyList.get(i))).getExponent() ;
+			if ( degree < exponent )
+				degree = exponent;
+		}
+		return degree;
 	}
 
 	@Override

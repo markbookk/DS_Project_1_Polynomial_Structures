@@ -83,14 +83,14 @@ public class Test1 {
 		assertTrue(delta < EPSILON);
 	}
 
-//	@Test
-//	public void testDegree() {
-//		int number1 = P1.degree();
-//		int number2 = 2;
-//		System.out.printf("Degree -> number1: %d, number2: %d\n", number1, number2);
-//		assertTrue(number1 == number2);
-//	}
-//
+	@Test
+	public void testDegree() {
+		int number1 = P1.degree();
+		int number2 = 2;
+		System.out.printf("Degree -> number1: %d, number2: %d\n", number1, number2);
+		assertTrue(number1 == number2);
+	}
+
 	@Test
 	public void testEvaluate() {
 		double number1 = P1.evaluate(3);
