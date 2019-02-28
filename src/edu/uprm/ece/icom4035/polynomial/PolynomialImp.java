@@ -336,7 +336,7 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public double definiteIntegral(double a, double b) {
-		return evaluate(b) - evaluate(a);
+		return indefiniteIntegral().evaluate(b) - indefiniteIntegral().evaluate(a);
 	}
 
 	@Override
