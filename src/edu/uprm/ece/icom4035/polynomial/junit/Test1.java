@@ -74,14 +74,14 @@ public class Test1 {
 
 	}
 
-//	@Test
-//	public void testDefiniteIntegral() {
-//		double number1 = P1.definiteIntegral(2, 4);
-//		double number2 = 151.333333;
-//		System.out.printf("Definite Integral-> number1: %f, number2: %f\n", number1, number2);
-//		double delta = number1 - number2;
-//		assertTrue(delta < EPSILON);
-//	}
+	@Test
+	public void testDefiniteIntegral() {
+		double number1 = P1.definiteIntegral(2, 4);
+		double number2 = 151.333333;
+		System.out.printf("Definite Integral-> number1: %f, number2: %f\n", number1, number2);
+		double delta = number1 - number2;
+		assertTrue(delta < EPSILON);
+	}
 
 //	@Test
 //	public void testDegree() {

@@ -336,8 +336,7 @@ public class PolynomialImp implements Polynomial{
 
 	@Override
 	public double definiteIntegral(double a, double b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return evaluate(b) - evaluate(a);
 	}
 
 	@Override
