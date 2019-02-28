@@ -104,6 +104,9 @@ public class PolynomialImp implements Polynomial{
 				
 				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() + ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
+				if (coefficientSum == 0)
+					continue;
+				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
 				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
@@ -122,6 +125,9 @@ public class PolynomialImp implements Polynomial{
 				
 				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() ) ;
 				
+				if (coefficientSum == 0)
+					continue;
+				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
 				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
@@ -139,6 +145,9 @@ public class PolynomialImp implements Polynomial{
 //				System.out.println("3st option");
 				
 				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
+				
+				if (coefficientSum == 0)
+					continue;
 				
 				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P2n.polyList.get(count2)).getExponent();
@@ -297,7 +306,9 @@ public class PolynomialImp implements Polynomial{
 				if (coefficient != 0)
 					nList.add(nTerm);
 			}
-			P3n.polyList = nList;
+			if (nList.size() != 0) //Prevents errors when its blank
+				P3n.polyList = nList;
+			
 			polyResult = polyResult.add(P3n);
 //			System.out.println("hio->" + polyResult.toString());
 			
@@ -325,7 +336,8 @@ public class PolynomialImp implements Polynomial{
 				nList.add(nTerm);
 			}
 		}
-		polyResult.polyList = nList;
+		if (nList.size() != 0) //Prevents errors when its blank
+			polyResult.polyList = nList;
 		return polyResult;
 	}
 
@@ -342,6 +354,7 @@ public class PolynomialImp implements Polynomial{
 			}
 		}
 		nList.add(new TermImp(1,0)); // +c
+//		if (nList.size() != 0) //Prevents errors when its blank
 		polyResult.polyList = nList;
 		return polyResult;
 	}
