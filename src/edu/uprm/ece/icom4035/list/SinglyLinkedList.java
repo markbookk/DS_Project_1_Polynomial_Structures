@@ -42,8 +42,8 @@ public class SinglyLinkedList<E> implements List {
 			this.next = null;
 		}
 		
-		public Node(E e, Node<E> N) {
-			this.element = e;
+		public Node(Object e, Node<E> N) {
+			this.element = (E) e;
 			this.next = N;
 		}
 
@@ -51,8 +51,8 @@ public class SinglyLinkedList<E> implements List {
 			return element;
 		}
 
-		public void setElement(E element) {
-			this.element = element;
+		public void setElement(Object e) {
+			this.element = (E) e;
 		}
 
 		public Node<E> getNext() {

@@ -20,8 +20,6 @@ public class Test1 {
 
 	@Before
 	public void setUp() throws Exception {
-		P98 = new PolynomialImp("3x^5+x^4+2x^3+-2x+5"); //MN
-		P99 = new PolynomialImp("2x^5+3x^3+7x+2"); //MN
 		 P1 = new PolynomialImp("8x^2+1");
 		 P2 = new PolynomialImp("4x^2+2");
 
@@ -31,8 +29,6 @@ public class Test1 {
 	public void testAdd() {
 		Polynomial P3 = P1.add(P2);
 		Polynomial P4 = new PolynomialImp("12x^2+3");
-//		Polynomial P3 = P99.add(P98);
-//		Polynomial P4 = new PolynomialImp("5x^5+x^4+5x^3+5x+7");
 		System.out.printf("Add-> P3: %s, P4: %s\n", P3, P4);
 		assertTrue(P3.equals(P4));
 		
