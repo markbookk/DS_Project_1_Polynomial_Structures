@@ -179,6 +179,9 @@ public class PolynomialImp implements Polynomial{
 		}
 		
 //		System.out.println("Addition result:" + polyString);
+		
+		if (polyString.equals("") || polyString.equals("+"))
+			polyString = "0";
 		Polynomial output = new PolynomialImp(polyString);
 		return output;
 	}
@@ -298,6 +301,9 @@ public class PolynomialImp implements Polynomial{
 		}
 		
 //		System.out.println("Subtraction result:" + polyString);
+		
+		if (polyString.equals("") || polyString.equals("+"))
+			polyString = "0";
 		Polynomial output = new PolynomialImp(polyString);
 		return output;
 	}
