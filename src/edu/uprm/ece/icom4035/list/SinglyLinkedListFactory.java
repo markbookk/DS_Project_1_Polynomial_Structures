@@ -5,7 +5,7 @@ public class SinglyLinkedListFactory<E> implements ListFactory {
 	@Override
 	public List newInstance() {
 		// TODO Auto-generated method stub
-		return null;
+		return new SinglyLinkedList<E>();
 	}
 
 }
