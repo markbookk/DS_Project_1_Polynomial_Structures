@@ -104,7 +104,7 @@ public class PolynomialImp implements Polynomial{
 			
 			if ( ((Term) (P1n.polyList.get(count)) ).getExponent() == maxE &&
 					((Term) (P2n.polyList.get(count2)) ).getExponent() == maxE) {
-				System.out.println("1st option");
+//				System.out.println("1st option");
 				
 				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() + ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
 				
@@ -114,117 +114,6 @@ public class PolynomialImp implements Polynomial{
 					continue;
 				}
 					
-				
-				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
-					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
-				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
-					polyString = polyString + coefficientSum + "x";
-				}else {//without exponent, only coefficient
-					polyString = polyString + coefficientSum;
-				}
-				
-				count ++;
-				count2 ++;
-
-			}
-			else if ( ((Term) (P1n.polyList.get(count)) ).getExponent() == maxE &&
-					((Term) (P2n.polyList.get(count2)) ).getExponent() != maxE) {
-				System.out.println("2nd option");
-				
-				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() ) ;
-				
-				if (coefficientSum == 0) {
-					count ++;
-					continue;
-				}
-				
-				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
-					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
-				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
-					polyString = polyString + coefficientSum + "x";
-				}else {//without exponent, only coefficient
-					polyString = polyString + coefficientSum;
-				}
-				
-				count ++;
-
-			}
-			
-			else if ( ((Term) (P1n.polyList.get(count)) ).getExponent() != maxE &&
-					((Term) (P2n.polyList.get(count2)) ).getExponent() == maxE) {
-				System.out.println("3st option");
-				
-				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
-				
-				if (coefficientSum == 0) {
-					count2 ++;
-					continue;
-				}
-				
-				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
-					polyString = polyString + coefficientSum + "x^" + ((Term) P2n.polyList.get(count2)).getExponent();
-				}else if ( ((Term) P2n.polyList.get(count2)).getExponent() == 1) {//x
-					polyString = polyString + coefficientSum + "x";
-				}else {//without exponent, only coefficient
-					polyString = polyString + coefficientSum;
-				}
-				
-				count2 ++;
-
-			}
-			
-			
-//			System.out.println(polyString);
-			
-		}
-		
-//		System.out.println("Addition result:" + polyString);
-		Polynomial output = new PolynomialImp(polyString);
-		return output;
-	}
-
-	@Override
-	public Polynomial subtract(Polynomial P2) {
-		PolynomialImp P1n = this;
-		PolynomialImp P2n = (PolynomialImp) P2;
-		
-		
-		PolynomialImp pTemp;
-		if ( ((Term) (P1n.polyList.get(0))).getExponent() >= ((Term) (P2n.polyList.get(0))).getExponent() ) {
-			;//Do nothing
-		}else {//Exchanging the variables to start with
-			pTemp = P1n;
-			P1n = P2n;
-			P2n = pTemp;
-		}
-		
-		String polyString = "";
-		int count = 0;
-		int count2 = 0;
-		int maxExponent = ((Term) P1n.polyList.get(count)).getExponent();
-//		System.out.println(maxExponent);
-		
-		for (int maxE=maxExponent; maxE >= 0; maxE--) {
-			if (count != 0 && !polyString.endsWith("+"))
-				polyString = polyString + "+";
-			
-			if (count >= P1n.polyList.size())
-				count --;
-			if (count2 >= P2n.polyList.size())
-				count2 --;
-			
-			
-			if ( ((Term) (P1n.polyList.get(count)) ).getExponent() == maxE &&
-					((Term) (P2n.polyList.get(count2)) ).getExponent() == maxE) {
-//				System.out.println("1st option");
-				
-				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() - ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
-				
-				if (coefficientSum == 0) {
-					count ++;
-					count2 ++;
-					continue;
-				}
 				
 				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
 					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
@@ -266,6 +155,125 @@ public class PolynomialImp implements Polynomial{
 //				System.out.println("3st option");
 				
 				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
+				
+				if (coefficientSum == 0) {
+					count2 ++;
+					continue;
+				}
+				
+				if ( ((Term) P2n.polyList.get(count2)).getExponent() > 1 ) {//x^n
+					polyString = polyString + coefficientSum + "x^" + ((Term) P2n.polyList.get(count2)).getExponent();
+				}else if ( ((Term) P2n.polyList.get(count2)).getExponent() == 1) {//x
+					polyString = polyString + coefficientSum + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + coefficientSum;
+				}
+				
+				count2 ++;
+
+			}
+			
+			
+//			System.out.println(polyString);
+			
+		}
+		
+//		System.out.println("Addition result:" + polyString);
+		Polynomial output = new PolynomialImp(polyString);
+		return output;
+	}
+
+	@Override
+	public Polynomial subtract(Polynomial P2) {
+		PolynomialImp P1n = this;
+		PolynomialImp P2n = (PolynomialImp) P2;
+		
+		
+		PolynomialImp pTemp;
+		boolean didExchange = false;
+		if ( ((Term) (P1n.polyList.get(0))).getExponent() >= ((Term) (P2n.polyList.get(0))).getExponent() ) {
+			;//Do nothing
+		}else {//Exchanging the variables to start with
+			pTemp = P1n;
+			P1n = P2n;
+			P2n = pTemp;
+			didExchange = true;
+		}
+		
+		String polyString = "";
+		int count = 0;
+		int count2 = 0;
+		int maxExponent = ((Term) P1n.polyList.get(count)).getExponent();
+//		System.out.println(maxExponent);
+		
+		for (int maxE=maxExponent; maxE >= 0; maxE--) {
+			if (count != 0 && !polyString.endsWith("+"))
+				polyString = polyString + "+";
+			
+			if (count >= P1n.polyList.size())
+				count --;
+			if (count2 >= P2n.polyList.size())
+				count2 --;
+			
+			
+			if ( ((Term) (P1n.polyList.get(count)) ).getExponent() == maxE &&
+					((Term) (P2n.polyList.get(count2)) ).getExponent() == maxE) {
+//				System.out.println("1st option");
+				
+				Double coefficientSum = ( ((Term) P1n.polyList.get(count)).getCoefficient() - ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
+				if (didExchange)
+					coefficientSum = -coefficientSum;
+
+				if (coefficientSum == 0) {
+					count ++;
+					count2 ++;
+					continue;
+				}
+				
+				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
+					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
+				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
+					polyString = polyString + coefficientSum + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + coefficientSum;
+				}
+				
+				count ++;
+				count2 ++;
+
+			}
+			else if ( ((Term) (P1n.polyList.get(count)) ).getExponent() == maxE &&
+					((Term) (P2n.polyList.get(count2)) ).getExponent() != maxE) {
+//				System.out.println("2nd option");
+				
+				Double coefficientSum = (  ((Term) P1n.polyList.get(count)).getCoefficient() ) ;
+				if (didExchange)
+					coefficientSum = -coefficientSum;
+				
+				if (coefficientSum == 0) {
+					count ++;
+					continue;
+				}
+				
+				if ( ((Term) P1n.polyList.get(count)).getExponent() > 1 ) {//x^n
+					polyString = polyString + coefficientSum + "x^" + ((Term) P1n.polyList.get(count)).getExponent();
+				}else if ( ((Term) P1n.polyList.get(count)).getExponent() == 1) {//x
+					polyString = polyString + coefficientSum + "x";
+				}else {//without exponent, only coefficient
+					polyString = polyString + coefficientSum;
+				}
+				
+				count ++;
+
+			}
+			
+			else if ( ((Term) (P1n.polyList.get(count)) ).getExponent() != maxE &&
+					((Term) (P2n.polyList.get(count2)) ).getExponent() == maxE) {
+//				System.out.println("3st option");
+				
+				Double coefficientSum = ( ((Term) P2n.polyList.get(count2)).getCoefficient() ) ;
+				if (didExchange)
+					coefficientSum = -coefficientSum;
 				
 				if (coefficientSum == 0) {
 					count2 ++;
