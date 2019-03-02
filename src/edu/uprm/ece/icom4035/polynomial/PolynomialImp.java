@@ -412,7 +412,8 @@ public class PolynomialImp implements Polynomial{
 	public double evaluate(double x) {
 		double result = 0;
 		for (int i=0; i < polyList.size(); i++) {
-			result += ((Term) (polyList.get(i))).getCoefficient() * Math.pow(x, ((Term) (polyList.get(i))).getExponent());
+			result += ((Term) (polyList.get(i))).evaluate(x); 
+//			result += ((Term) (polyList.get(i))).getCoefficient() * Math.pow(x, ((Term) (polyList.get(i))).getExponent());
 		}
 		return result;
 	}
