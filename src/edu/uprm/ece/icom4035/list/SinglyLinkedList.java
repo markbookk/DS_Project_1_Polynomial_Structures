@@ -68,7 +68,7 @@ public class SinglyLinkedList<E> implements List {
 	private int size;
 	
 	public SinglyLinkedList() {
-		this.header = null;
+		this.header = new Node<E>();
 		this.size = 0;
 	}
 
@@ -98,9 +98,8 @@ public class SinglyLinkedList<E> implements List {
 		}
 		this.checkIndex(index);
 		if (index == 0) {
-			Node<E> temp = this.header;
-			E result = temp.getElement();
-			this.header = this.header.getNext();
+			Node<E> temp = this.header.getNext();
+			this.header.setNext( this.header.getNext().getNext() );
 			temp.setNext(null);
 			temp.setElement(null);
 			this.size--;
@@ -137,8 +136,8 @@ public class SinglyLinkedList<E> implements List {
 
 		if (index == 0) {
 			Node<E> newNode = new Node<E>(e, null);
-			newNode.setNext(this.header);
-			this.header = newNode;
+			newNode.setNext(this.header.getNext());
+			this.header.setNext(newNode);
 		}
 		else {
 			Node<E> newNode = new Node<E>(e, null);
@@ -152,7 +151,7 @@ public class SinglyLinkedList<E> implements List {
 	@Override
 	public void add(Object e) {
 		if (this.isEmpty()) {
-			this.header = new Node(e, null);
+			this.header.setNext(new Node(e, null));
 
 		}
 		else {
@@ -165,6 +164,7 @@ public class SinglyLinkedList<E> implements List {
 
 	
 	private Node<E> findNode(int index) {
+		index = index + 1;
 		Node<E> temp = this.header;
 		int i = 0;
 		
@@ -177,7 +177,8 @@ public class SinglyLinkedList<E> implements List {
 	}
 
 	private void checkIndex(int index) {
-		if ((index < 0) || (index >= this.size())){
+		index = index + 1;
+		if ((index <= 0) || (index >= this.size()+1)){
 			throw new IndexOutOfBoundsException();
 		}
 	}
@@ -194,50 +195,96 @@ public class SinglyLinkedList<E> implements List {
 	
 	@Override
 	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
+		Node<E> temp = this.header;
+		if (temp.getNext() == null)
+			return false;
+		int count = 0;
+		while (!temp.getNext().equals(obj)) {
+			temp = temp.getNext();
+			count ++;
+		}
+		if (count >= size()-1)
+			return false;
+			
+		remove(count);
+		size --;
+		return true;
 	}
 
 	@Override
 	public int removeAll(Object obj) {
+		int amountRemoved = 0;
+		int count = 0;
+		Node<E> temp = this.header;
+		while (temp.getNext() != null) {
+			if (temp.getNext().equals(obj)) {
+				temp.setNext(temp.getNext().getNext());
+				remove(count);
+			}
+			temp = temp.getNext();
+		}
+				
 		// TODO Auto-generated method stub
-		return 0;
+		return amountRemoved;
 	}
 
 	@Override
 	public Object first() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty())
+			return null;
+		return header.getNext();
 	}
 
 	@Override
 	public Object last() {
-		// TODO Auto-generated method stub
-		return null;
+		if (isEmpty())
+			return null;
+		return findNode(size()-1);
 	}
 
 	@Override
 	public int firstIndex(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		Node<E> temp = this.header;
+		while (!temp.getNext().equals(obj)) {
+			temp = temp.getNext();
+			index ++;
+		}
+		if (temp.getNext().equals(obj))
+			return index+1;
+		return -1;
 	}
 
 	@Override
 	public int lastIndex(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
+		int index = 0;
+		int lastIndexPos = -1;
+		Node<E> temp = this.header;
+		while (temp.getNext() != null) {
+			if (temp.getNext().equals(obj))
+				lastIndexPos = index;
+			temp = temp.getNext();
+			index ++;
+		}
+		if (temp.getNext().equals(obj))
+			return index+1;
+		return -1;
 	}
 
 	@Override
 	public boolean contains(Object obj) {
-		// TODO Auto-generated method stub
+		Node<E> temp = this.header;
+		while (!temp.getNext().equals(obj)) {
+			temp = temp.getNext();
+		}
+		if (temp.getNext().equals(obj))
+			return true;
 		return false;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		header.setNext(null);
 	}
 
 	
